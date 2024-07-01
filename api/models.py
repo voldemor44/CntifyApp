@@ -20,8 +20,8 @@ class Users(models.Model):
     name = models.CharField(max_length=30)
     email = models.EmailField()
     password = models.CharField(max_length=15)
-    email_verified_at = models.DateField()
-    is_active = models.BooleanField()
+    email_verified_at = models.DateField(null=True, blank=True)
+    is_active = models.BooleanField(default=0)
     role = models.ForeignKey(Roles, on_delete=models.CASCADE)
 
 
@@ -93,9 +93,11 @@ class Notifications(models.Model):
     status = models.CharField()
     partner = models.ForeignKey(Partners, on_delete=models.CASCADE)
 
+
 class Departments(models.Model):
     name = models.CharField()
-    
+
+
 class DepartmentAllocationtypes(models.Model):
     department = models.ForeignKey(Departments, on_delete=models.CASCADE)
     allocationtype = models.ForeignKey(Allocationtypes, on_delete=models.CASCADE)

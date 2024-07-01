@@ -14,7 +14,7 @@ class PermissionsSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class Role_PermissionSerializer(ModelSerializer):
+class RolePermissionSerializer(ModelSerializer):
     class Meta:
         model = RolePermissions
         fields = "__all__"
@@ -53,4 +53,46 @@ class NewslettersSerializer(ModelSerializer):
 class NotificationsSerializer(ModelSerializer):
     class Meta:
         model = Notifications
+        fields = "__all__"
+
+
+class PhonebookAdvertisingSerializer(ModelSerializer):
+    class Meta:
+        model = PhonebookAdvertising
+        fields = "__all__"
+
+
+class AllocationTypeSerializer(ModelSerializer):
+    class Meta:
+        model = Allocationtypes
+        fields = "__all__"
+
+
+class PhoneAllocationTypeSerializer(ModelSerializer):
+    class Meta:
+        model = PhonebookAllocationtypes
+        fields = "__all__"
+
+
+class TransactionSerializer(ModelSerializer):
+    class Meta:
+        model = Transactions
+        fields = "__all__"
+
+
+class DepositsSerializer(ModelSerializer):
+    class Meta:
+        model = Deposits
+        fields = "__all__"
+
+
+class DepartmentsSerializer(ModelSerializer):
+    class Meta:
+        model = Departments
+        fields = "__all__"
+
+
+class DepartmentAllocationTypesSerializer(ModelSerializer):
+    class Meta:
+        model = DepartmentAllocationtypes
         fields = "__all__"

@@ -62,7 +62,7 @@ class UsersViewset(APIView):
         user = Users.objects.filter(id=id)
         print(user)
         user.delete()
-        return Response({"status": "success", "message": "Product was deleted"})
+        return Response({"status": "success", "message": "User was deleted"})
 
 
 class PartnersViewset(APIView):
@@ -112,7 +112,7 @@ class PartnersViewset(APIView):
         partner = Partners.objects.filter(id=id)
         print(partner)
         partner.delete()
-        return Response({"status": "success", "message": "Product was deleted"})
+        return Response({"status": "success", "message": "Partner was deleted"})
 
 
 class PhonebooksViewset(APIView):
@@ -162,154 +162,154 @@ class PhonebooksViewset(APIView):
         phone = Phonebooks.objects.filter(id=id)
         print(phone)
         phone.delete()
-        return Response({"status": "success", "message": "Product was deleted"})
+        return Response({"status": "success", "message": "Contact was deleted"})
 
 
 class AdvertisingViewset(APIView):
 
     def get(self, request, id=None):
         if id:
-            user = Users.objects.get(id=id)
-            user = UsersSerializer(user)
+            advertising = Advertising.objects.get(id=id)
+            advertising = AdvertisingSerializer(advertising)
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": advertising.data}, status=status.HTTP_200_OK
             )
 
-        users = Users.objects.all()
-        users = UsersSerializer(users, many=True)
+        advertisings = Advertising.objects.all()
+        advertisings = AdvertisingSerializer(advertisings, many=True)
         return Response(
-            {"status": "success", "data": users.data}, status=status.HTTP_200_OK
+            {"status": "success", "data": advertisings.data}, status=status.HTTP_200_OK
         )
 
     def post(self, request):
-        user = UsersSerializer(data=request.data)
-        if user.is_valid():
-            user.save()
+        advertising = AdvertisingSerializer(data=request.data)
+        if advertising.is_valid():
+            advertising.save()
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": advertising.data}, status=status.HTTP_200_OK
             )
         else:
             return Response(
-                {"status": "success", "data": user.errors},
+                {"status": "success", "data": advertising.errors},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
     def patch(self, request, id=None):
-        user = Users.objects.get(id=id)
-        user = UsersSerializer(user, data=request.data, partial=True)
-        if user.is_valid():
-            user.save()
+        advertising = Advertising.objects.get(id=id)
+        advertising = AdvertisingSerializer(advertising, data=request.data, partial=True)
+        if advertising.is_valid():
+            advertising.save()
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": advertising.data}, status=status.HTTP_200_OK
             )
         else:
             return Response(
-                {"status": "success", "data": user.errors},
+                {"status": "success", "data": advertising.errors},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
     def delete(self, request, id=None):
-        user = Users.objects.filter(id=id)
-        print(user)
-        user.delete()
-        return Response({"status": "success", "message": "Product was deleted"})
+        advertising = Advertising.objects.filter(id=id)
+        print(advertising)
+        advertising.delete()
+        return Response({"status": "success", "message": "Advertising was deleted"})
 
 
 class NewslettersViewset(APIView):
 
     def get(self, request, id=None):
         if id:
-            user = Users.objects.get(id=id)
-            user = UsersSerializer(user)
+            new = Newsletters.objects.get(id=id)
+            new = NewslettersSerializer(new)
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": new.data}, status=status.HTTP_200_OK
             )
 
-        users = Users.objects.all()
-        users = UsersSerializer(users, many=True)
+        news = Newsletters.objects.all()
+        news = NewslettersSerializer(news, many=True)
         return Response(
-            {"status": "success", "data": users.data}, status=status.HTTP_200_OK
+            {"status": "success", "data": news.data}, status=status.HTTP_200_OK
         )
 
     def post(self, request):
-        user = UsersSerializer(data=request.data)
-        if user.is_valid():
-            user.save()
+        new = NewslettersSerializer(data=request.data)
+        if new.is_valid():
+            new.save()
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": new.data}, status=status.HTTP_200_OK
             )
         else:
             return Response(
-                {"status": "success", "data": user.errors},
+                {"status": "success", "data": new.errors},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
     def patch(self, request, id=None):
-        user = Users.objects.get(id=id)
-        user = UsersSerializer(user, data=request.data, partial=True)
-        if user.is_valid():
-            user.save()
+        new = Newsletters.objects.get(id=id)
+        new = NewslettersSerializer(new, data=request.data, partial=True)
+        if new.is_valid():
+            new.save()
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": new.data}, status=status.HTTP_200_OK
             )
         else:
             return Response(
-                {"status": "success", "data": user.errors},
+                {"status": "success", "data": new.errors},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
     def delete(self, request, id=None):
-        user = Users.objects.filter(id=id)
-        print(user)
-        user.delete()
-        return Response({"status": "success", "message": "Product was deleted"})
+        new = Newsletters.objects.filter(id=id)
+        print(new)
+        new.delete()
+        return Response({"status": "success", "message": "Newsletter was deleted"})
 
 
 class NotificationsViewset(APIView):
 
     def get(self, request, id=None):
         if id:
-            user = Users.objects.get(id=id)
-            user = UsersSerializer(user)
+            notification = Notifications.objects.get(id=id)
+            notification = NotificationsSerializer(notification)
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": notification.data}, status=status.HTTP_200_OK
             )
 
-        users = Users.objects.all()
-        users = UsersSerializer(users, many=True)
+        notifications = Notifications.objects.all()
+        notifications = NotificationsSerializer(notifications, many=True)
         return Response(
-            {"status": "success", "data": users.data}, status=status.HTTP_200_OK
+            {"status": "success", "data": notifications.data}, status=status.HTTP_200_OK
         )
 
     def post(self, request):
-        user = UsersSerializer(data=request.data)
-        if user.is_valid():
-            user.save()
+        notification = NotificationsSerializer(data=request.data)
+        if notification.is_valid():
+            notification.save()
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": notification.data}, status=status.HTTP_200_OK
             )
         else:
             return Response(
-                {"status": "success", "data": user.errors},
+                {"status": "success", "data": notification.errors},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
     def patch(self, request, id=None):
-        user = Users.objects.get(id=id)
-        user = UsersSerializer(user, data=request.data, partial=True)
-        if user.is_valid():
-            user.save()
+        notification = Notifications.objects.get(id=id)
+        notification = NotificationsSerializer(notification, data=request.data, partial=True)
+        if notification.is_valid():
+            notification.save()
             return Response(
-                {"status": "success", "data": user.data}, status=status.HTTP_200_OK
+                {"status": "success", "data": notification.data}, status=status.HTTP_200_OK
             )
         else:
             return Response(
-                {"status": "success", "data": user.errors},
+                {"status": "success", "data": notification.errors},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
     def delete(self, request, id=None):
-        user = Users.objects.filter(id=id)
-        print(user)
-        user.delete()
+        notification = Notifications.objects.filter(id=id)
+        print(notification)
+        notification.delete()
         return Response({"status": "success", "message": "Product was deleted"})
